@@ -1,0 +1,41 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+#Global propieties
+separator=true
+separator_block_width=15
+
+aling=center
+markup=pango
+border_top=0
+border_bottom=1
+border_left=0
+border_right=0
+color=#eeeeee
+
+[ip]
+command=ip addr | grep 192 | awk '{print $2}' | sed 's/\/.*//g'
+interval=1
+color=#91e78b
+border=#91e78b
+
+[cpu]
+command=/home/drow/.config/i3blocks/cpu
+interval=perslist
+markup=pango
+color=#DFD932
+color=#BFB912
+min_width=70
+aling=right
+
+[battery]
+command=acpi | awk -F ', ' '{print $2}'
+interval=30
+border=#3192D4
+#⚡
+
+[time]
+command=date '+%d/%m/%Y    %H:%M'
+interval=1
