@@ -115,12 +115,16 @@ function! OpenTerminal()
 endfunction
 nnoremap <C-t> :call OpenTerminal()<CR>
 
-
+"live server
+function! LiveServer()
+  execute "term live-server"
+  execute "bp"
+endfunction
+nnoremap <Leader>ls :call LiveServer()<CR>
 
 "PLUGINS
 nmap <Leader>s <Plug>(easymotion-s2)
 nnoremap <Leader>nt :NERDTreeFind<CR>
-nnoremap <Leader>ls :Bracey<CR>
 "fzf
 nnoremap <Leader>p :Files<CR>
 nnoremap <Leader>ag :Ag<CR>
@@ -129,6 +133,7 @@ nnoremap <Leader>ag :Ag<CR>
 "nnoremap <Leader>gp :Gpush<cr>
 "nnoremap <Leader>gl :Gpull<cr>
 "coc
+inoremap <silent><expr> <c-space> coc#refresh()
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -145,3 +150,7 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+"Enter coc
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"

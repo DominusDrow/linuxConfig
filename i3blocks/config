@@ -30,6 +30,19 @@ color=#BFB912
 min_width=70
 aling=right
 
+[volume]
+command=/home/drow/.config/i3blocks/volume.sh
+#LABEL=♪ 
+LABEL=VOL 
+interval=once
+signal=10
+color=#ffa252
+border=#ff7752
+#STEP=5%
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
+#NATURAL_MAPPING=0
+
 [battery]
 command=acpi | awk -F ', ' '{print $2}'
 interval=30
