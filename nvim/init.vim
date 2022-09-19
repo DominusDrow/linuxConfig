@@ -46,6 +46,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
+Plug 'github/copilot.vim'
 
 "Git
 "Plug 'tpope/vim-fugitive'
@@ -70,15 +71,32 @@ nnoremap <Leader>; $a;<Esc>
 "buffers
 map <Leader>ob :Buffers<cr>
 "save and quit
-nnoremap <Leader>w :w<CR>
+nnoremap <silent><Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>wq :wq<CR>
 "split resize
 nnoremap <Leader>> 10<C-w>>
 nnoremap <Leader>< 10<C-w><
-"execute
-nnoremap <Leader>x :!node %<cr>
+
+"run current file
+autocmd FileType python nnoremap <buffer> <silent> <Leader>x :!python3 %:p<cr>
+autocmd FileType javascript nnoremap <buffer> <silent> <Leader>x :!node %:p<cr>
+autocmd FileType java nnoremap <buffer> <silent> <Leader>x :call JavaRun()<cr>
+autocmd FileType cpp nnoremap <buffer> <silent> <Leader>x :call GccRun()<cr>
+
+function! JavaRun()
+  exec "w"
+  exec "!javac %"
+  exec "!java %"
+endfunction
+
+func! GccRun()
+  exec "w"
+  exec "!gcc % -o %<"
+  exec "! ./%<"
+endfunc
+
 "Terminal
 function! OpenTerminal()
   " move to right most buffer
@@ -127,7 +145,6 @@ nmap <Leader>s <Plug>(easymotion-s2)
 nnoremap <Leader>nt :NERDTreeFind<CR>
 "fzf
 nnoremap <Leader>p :Files<CR>
-nnoremap <Leader>ag :Ag<CR>
 "git
 "nnoremap <Leader>G :G<cr>
 "nnoremap <Leader>gp :Gpush<cr>
