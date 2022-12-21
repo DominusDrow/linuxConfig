@@ -15,6 +15,30 @@ border_left=0
 border_right=0
 color=#eeeeee
 
+[pacman-updates]
+command="$HOME"/.config/i3blocks/checkupdates.sh
+markup=pango
+interval=3600
+QUIET=true
+WATCH=^linux.* ^pacman.* ^emacs.*
+color=#dFdF65
+BASE_COLOR=#0fff5f
+UPDATE_COLOR=#dFdF65
+AUR=true
+LABEL= 
+signal=3
+
+[language]
+command=$HOME/.config/i3blocks/language.sh
+interval=once
+signal=1
+color=#dFdF65
+
+[keyboard]
+command=awk -F '"' '/XKBLAYOUT/{print "'"${1:-} "'"$2}' /etc/default/keyboard
+interval=once
+color=#dFdF65
+
 [ip]
 command=ip addr | grep 192 | awk '{print $2}' | sed 's/\/.*//g'
 interval=1
@@ -22,7 +46,7 @@ color=#91e78b
 border=#91e78b
 
 [cpu]
-command=/home/drow/.config/i3blocks/cpu
+command="$HOME"/.config/i3blocks/cpu
 interval=perslist
 markup=pango
 color=#DFD932
@@ -31,23 +55,16 @@ min_width=70
 aling=right
 
 [volume]
-command=/home/drow/.config/i3blocks/volume.sh
-#LABEL=♪ 
-LABEL=VOL 
-interval=once
+command="$HOME"/.config/i3blocks/volume.sh
+interval=1
 signal=10
 color=#ffa252
 border=#ff7752
-#STEP=5%
-#MIXER=[determined automatically]
-#SCONTROL=[determined automatically]
-#NATURAL_MAPPING=0
 
 [battery]
-command=acpi | awk -F ', ' '{print $2}'
+#command=acpi | awk -F ', ' '{print $2}'
+command="$HOME"/.config/i3blocks/battery.sh
 interval=30
-border=#3192D4
-#⚡
 
 [time]
 command=date '+%d/%m/%Y    %H:%M'
