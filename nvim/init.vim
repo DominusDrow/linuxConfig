@@ -84,6 +84,8 @@ autocmd FileType python nnoremap <buffer> <silent> <Leader>x :!python3 %:p<cr>
 autocmd FileType javascript nnoremap <buffer> <silent> <Leader>x :!node %:p<cr>
 autocmd FileType java nnoremap <buffer> <silent> <Leader>x :call JavaRun()<cr>
 autocmd FileType cpp nnoremap <buffer> <silent> <Leader>x :call GccRun()<cr>
+autocmd FileType c nnoremap <buffer> <silent> <Leader>x :call GccRun()<cr>
+autocmd FileType sh nnoremap <buffer> <silent> <Leader>x :!zsh %:p<cr>
 
 function! JavaRun()
   exec "w"
