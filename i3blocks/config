@@ -28,14 +28,8 @@ AUR=true
 LABEL= 
 signal=3
 
-[language]
-command=$HOME/.config/i3blocks/language.sh
-interval=once
-signal=1
-color=#dFdF65
-
 [keyboard]
-command=awk -F '"' '/XKBLAYOUT/{print "'"${1:-} "'"$2}' /etc/default/keyboard
+command=awk -F '"' '/XKBLAYOUT/{print "'"${1:- } "'"$2}' /etc/default/keyboard
 interval=once
 color=#dFdF65
 
@@ -45,15 +39,6 @@ interval=1
 color=#91e78b
 border=#91e78b
 
-[cpu]
-command="$HOME"/.config/i3blocks/cpu
-interval=perslist
-markup=pango
-color=#DFD932
-color=#BFB912
-min_width=70
-aling=right
-
 [volume]
 command="$HOME"/.config/i3blocks/volume.sh
 interval=1
@@ -62,10 +47,10 @@ color=#ffa252
 border=#ff7752
 
 [battery]
-#command=acpi | awk -F ', ' '{print $2}'
 command="$HOME"/.config/i3blocks/battery.sh
 interval=30
 
 [time]
-command=date '+%d/%m/%Y    %H:%M'
+command=date '+   %d/%m/%Y    %H:%M'
+label=
 interval=1
