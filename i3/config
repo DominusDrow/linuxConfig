@@ -228,11 +228,13 @@ assign [class="gnome-boxes"] $ws8
 
 exec setxkbmap latam 
 exec brightnessctl set 2% 
-exec feh --bg-fill /usr/share/backgrounds/MeBackgrounds/wallpaperflare.com_wallpaper(6).jpg
+#exec feh --bg-fill /usr/share/backgrounds/MeBackgrounds/wallpaperflare.com_wallpaper\(9\).jpg 
+exec feh --bg-fill /usr/share/backgrounds/MeBackgrounds/image.png
 exec picom -b 
 exec redshift -P -O 1500
 
-bindsym Mod1+space exec rofi -show run -theme Monokai -opacity "80" -columns "2"  
+bindsym Mod1+space exec rofi -show drun -icon-theme "Papirus" -show-icons
+
 bindsym $mod+Escape exec shutdown now
 bindsym Print exec gnome-screenshot -i
 bindsym Shift+Print exec gnome-screenshot
