@@ -140,7 +140,16 @@ function! LiveServer()
   execute "term live-server"
   execute "bp"
 endfunction
-nnoremap <Leader>ls :call LiveServer()<CR>
+"npm start server
+function! NpmStart()
+  execute "term npm start"
+  execute "bp"
+endfunction
+autocmd FileType html nnoremap <buffer> <silent> <Leader>ls :call LiveServer()<cr>
+autocmd FileType javascript nnoremap <buffer> <silent> <Leader>ls :call NpmStart()<cr>
+
+"autoformat code
+autocmd FileType javascript nnoremap <buffer> <silent> <Leader>f gg=G<cr>
 
 "PLUGINS
 nmap <Leader>s <Plug>(easymotion-s2)
